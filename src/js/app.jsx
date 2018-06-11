@@ -4,9 +4,7 @@ import axios from 'axios';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { value: '' };
-
-    this.handleChange = this.handleChange.bind(this);
+    this.state = { brandy: '' };
   }
 
   componentDidMount() {
@@ -16,28 +14,32 @@ class App extends React.Component {
       });
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
-  }
-
-  renderSquare(element) {
-    return <div>{{ element }}</div>;
-  }
-
   render() {
-    let html = '';
-    if (this.state.brandy) {
-      this.state.brandy.forEach((element) => {
-        html += this.renderSquare(element);
-        console.log(html)
-      });
+    if (!this.state.brandy) {
+      return (
+        <div>
+          One moment..
+        </div>
+      );
     }
-    
 
     return (
-      <div>
-        {{ html }}
-      </div>
+      <ul>
+        { this.state.brandy.map((item, index) => (
+            <li key={index}>
+              <div>
+                Page Name: {item.pageName}
+              </div>
+              <div>
+                Content: {item.world}
+              </div>
+              <div>
+                Tempalte: {item.template}
+              </div>
+            </li>
+          )
+        )}
+      </ul>
     );
   }
 }
