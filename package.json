@@ -1,0 +1,50 @@
+{
+  "name": "dashboard",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run clean && npm run dev:styles | npm run dev:webpack | npm run dev:html | npm run dev:server | npm run dev:reloadBrowser",
+    "dev:html": "npm run copyHtml | watch 'npm run copyHtml' ./src/html --interval=1",
+    "dev:server": "http-server ./dist -c-1",
+    "dev:reloadBrowser": "livereload ./dist -w 1000",
+    "dev:styles": "npm run sass | watch 'npm run sass' ./src/styles --interval=1",
+    "dev:webpack": "webpack --watch --config ./webpack.config.js --mode development",
+    "prod": "npm run clean && npm run copyHtml | npm run prod:webpack | npm run prod:styles",
+    "prod:styles": "node-sass src/styles/main.scss -o ./dist",
+    "prod:webpack": "webpack --config ./webpack.config.js --mode production",
+    "copyHtml": "cp ./src/html/*.html ./dist",
+    "sass": "node-sass src/styles/main.scss --include-path node_modules/susy/sass/ -o ./dist",
+    "clean": "rm -rf ./dist && mkdir ./dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-jsx-a11y": "^6.0.3",
+    "eslint-plugin-react": "^7.7.0",
+    "http-server": "^0.11.1",
+    "livereload": "^0.7.0",
+    "node-sass": "^4.9.0",
+    "susy": "^3.0.5",
+    "watch": "^1.0.2",
+    "webpack": "^4.6.0",
+    "webpack-cli": "^2.0.15",
+    "webpack-dev-server": "^3.1.3"
+  }
+}
