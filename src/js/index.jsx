@@ -1,34 +1,24 @@
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import App from './app';
+import 'babel-polyfill';  
+import React from 'react';  
+import { render } from 'react-dom';  
+import configureStore from './store/configureStore';  
+import { Provider } from 'react-redux';  
+import { HashRouter } from 'react-router-dom';
+import AllRoutes from './routes';
+import App from './components/App';
+import {loadBrandies} from './actions/brandyActions';
 
-function auth(state = [], action) {
-  switch (action.type) {
-    case 'LOGIN':
-      return {
-        value: action.value,
-        status: 'logged in',
-      };
-    case 'LOGOUT':
-      return {
-        value: 'guest',
-        status: 'logged out',
-      };
-    default:
-      return state;
-  }
-}
+const store = configureStore();
 
-const initialState = {
-  value: 'guest',
-  status: 'logged out',
-};
-const store = createStore(auth, initialState);
+store.dispatch(loadBrandies());
 
 render(
   <Provider store={store}>
-    <App />
+    <HashRouter>
+      <App>
+        <AllRoutes />
+      </App>
+    </HashRouter>
   </Provider>,
   document.getElementById('app'),
 );
