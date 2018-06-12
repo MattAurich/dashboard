@@ -1,4 +1,4 @@
 export default {  
-  brandies: [],
-  hobbies: []
+  pages: [],
+  sections: []
 }

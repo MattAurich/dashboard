@@ -7,9 +7,9 @@ const Header = () => {
       <NavLink to="/" 
         activeClassName="active">Home</NavLink>
       {" | "}
-      <Link to="/brandies">Brandies</Link>
+      <Link to="/pages">Pages</Link>
       {" | "}
-      <Link to="/brandies/5b17f90f81ff743f8593659e">A Brandy</Link>
+      <Link to="/pages/5b1f1a6dd336055c6d5a2ae8">A Page</Link>
     </nav>
   );
 };

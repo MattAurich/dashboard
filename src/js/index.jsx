@@ -6,11 +6,11 @@ import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import AllRoutes from './routes';
 import App from './components/App';
-import {loadBrandies} from './actions/brandyActions';
+import {loadPages} from './actions/pageActions';
 
 const store = configureStore();
 
-store.dispatch(loadBrandies());
+store.dispatch(loadPages());
 
 render(
   <Provider store={store}>

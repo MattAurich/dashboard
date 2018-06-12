@@ -1,9 +1,9 @@
 import {combineReducers} from 'redux';  
-import brandies from './brandyReducer';
+import pages from './pageReducer';
 
 const rootReducer = combineReducers({  
   // short hand property names
-  brandies
-})
+  pages
+});
 
 export default rootReducer;  
