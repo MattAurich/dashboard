@@ -11,15 +11,13 @@ class PageForm extends React.Component {
   }
 
   makeCheckBoxes() {
-    return this.props.sections.map((section) => {
-      return (
-        <CheckBox
-          item={section}
-          handleChange={this.props.onSectionChange}
-          key={section.id}
-        />
-      );
-    });
+    return this.props.sections.map(section => (
+      <CheckBox
+        item={section}
+        handleChange={this.props.onSectionChange}
+        key={section.id}
+      />
+    ));
   }
 
   render() {
@@ -40,7 +38,6 @@ class PageForm extends React.Component {
 
           <input
             type="submit"
-            disabled={this.props.saving}
             className="btn btn-primary"
             onClick={this.props.onSave}
           />
@@ -50,12 +47,15 @@ class PageForm extends React.Component {
   }
 }
 
-PageForm.propTypes = {  
-  page: PropTypes.object.isRequired,
-  sections: PropTypes.array.isRequired,
-  // onSave: PropTypes.func.isRequired,
-  // onChange: PropTypes.func.isRequired,
-  // onSectionChange: PropTypes.func.isRequired,
+PageForm.propTypes = {
+  page: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    details: PropTypes.string.isRequired,
+  }).isRequired,
+  sections: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onSave: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  onSectionChange: PropTypes.func.isRequired,
 };
 
 export default PageForm;

@@ -13,7 +13,6 @@ class Page extends React.Component {
     this.state = {
       isEditing: false,
       page: this.props.page,
-      pageSections: this.props.pageSections,
       checkBoxSections: this.props.checkBoxSections,
     };
 
@@ -29,7 +28,6 @@ class Page extends React.Component {
     }
     if (this.props.checkBoxSections.length < nextProps.checkBoxSections.length) {
       this.setState({
-        pageSections: nextProps.pageSections,
         checkBoxSections: nextProps.checkBoxSections,
       });
     }
@@ -85,21 +83,25 @@ class Page extends React.Component {
     }
 
     return (
-      <div className="col-md-8 col-md-offset-2">
+      <div>
         <h1>{this.props.page.details}</h1>
         <div>{this.props.page.id}</div>
         <SectionList sections={this.props.pageSections} />
-        <button onClick={this.toggleEdit}>edit</button>
+        <button className="btn btn-primary" onClick={this.toggleEdit}>edit</button>
       </div>);
   }
 }
 
 Page.propTypes = {
-  // TODO: PropTypes.shape({}) --> https://labnotes.panderalabs.com/shaping-up-your-react-components-with-proptypes-shape-and-selectors-9d1111d0566f
-  page: PropTypes.object.isRequired,
+  page: PropTypes.shape({
+    id: PropTypes.string,
+    details: PropTypes.string,
+  }).isRequired,
   pageSections: PropTypes.arrayOf(PropTypes.object).isRequired,
   checkBoxSections: PropTypes.arrayOf(PropTypes.object).isRequired,
-  actions: PropTypes.object.isRequired,
+  actions: PropTypes.shape({
+    updatePage: PropTypes.func.isRequired,
+  }).isRequired,
 };
 
 

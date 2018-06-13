@@ -1,11 +1,12 @@
-import 'babel-polyfill';  
-import React from 'react';  
-import { render } from 'react-dom';  
-import configureStore from './store/configureStore';  
-import { Provider } from 'react-redux';  
+import 'babel-polyfill';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
+
 import AllRoutes from './routes';
 import App from './components/App';
+import configureStore from './store/configureStore';
 import { loadPages } from './actions/pageActions';
 import { loadSections } from './actions/sectionActions';
 

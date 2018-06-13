@@ -5,26 +5,34 @@ const TextInput = ({
   name, onChange, placeholder, value, label,
 }) => (
   <div className="form-group">
-    <label htmlFor={name}>{ label }</label>
     <div className="field">
-      <input
-        type="text"
-        name={name}
-        className="form-control"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
+      <label htmlFor={name}>{ label }
+        <input
+          type="text"
+          id={name}
+          name={name}
+          className="form-control"
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+        />
+      </label>
     </div>
   </div>
 );
 
-TextInput.propTypes = {  
+TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string,
   value: PropTypes.string,
   label: PropTypes.string,
+};
+
+TextInput.defaultProps = {
+  placeholder: null,
+  value: null,
+  label: null,
 };
 
 export default TextInput;

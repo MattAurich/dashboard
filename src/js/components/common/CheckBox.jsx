@@ -17,9 +17,13 @@ const CheckBox = ({
   </div>
 );
 
-CheckBox.propTypes = {  
-  item: PropTypes.object.isRequired, 
-  handleChange: PropTypes.func.isRequired
+CheckBox.propTypes = {
+  item: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    content: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+  }).isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default CheckBox;

@@ -15,7 +15,7 @@ const Pages = (props) => {
       <div className="col-md-4">
         <PageList pages={pages} />
       </div>
-      <div className="col-md-8">
+      <div className="col-md-7 col-md-offset-1">
         <Route path="/pages/:id" component={Page} />
       </div>
     </div>
