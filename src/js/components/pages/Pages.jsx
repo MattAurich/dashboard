@@ -1,8 +1,8 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import Page from './Page';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import Page from './Page';
 import PageList from './PageList';
 
 
@@ -20,17 +20,17 @@ const Pages = (props) => {
       </div>
     </div>
   );
-}
+};
 
 
 Pages.propTypes = {
   pages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
-    pages: state.pages
+    pages: state.pages,
   };
-} 
+}
 
 export default connect(mapStateToProps)(Pages);
