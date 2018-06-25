@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import SectionList from './SectionList';
 import * as pageActions from '../../actions/pageActions';
 import PageForm from './PageForm';
+import ChangeLocation from '../common/ChangeLocation';
 
 class Page extends React.Component {
   constructor(props, context) {
@@ -20,6 +21,7 @@ class Page extends React.Component {
     this.updatePageState = this.updatePageState.bind(this);
     this.updatePageSections = this.updatePageSections.bind(this);
     this.savePage = this.savePage.bind(this);
+    this.deletePage = this.deletePage.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -67,6 +69,10 @@ class Page extends React.Component {
     this.state.isEditing = false;
   }
 
+  deletePage() {
+    this.props.actions.deletePage(this.state.page);
+  }
+
   render() {
     if (this.state.isEditing) {
       return (
@@ -78,16 +84,21 @@ class Page extends React.Component {
             onSave={this.savePage}
             onChange={this.updatePageState}
             onSectionChange={this.updatePageSections}
+            location={this.props.location}
           />
         </div>);
     }
 
     return (
       <div>
+        <ChangeLocation
+          location={this.props.location}
+        />
         <h1>{this.props.page.details}</h1>
         <div>{this.props.page.id}</div>
         <SectionList sections={this.props.pageSections} />
         <button className="btn btn-primary" onClick={this.toggleEdit}>edit</button>
+        <button onClick={this.deletePage} className="btn btn-default">delete</button>
       </div>);
   }
 }
@@ -101,7 +112,9 @@ Page.propTypes = {
   checkBoxSections: PropTypes.arrayOf(PropTypes.object).isRequired,
   actions: PropTypes.shape({
     updatePage: PropTypes.func.isRequired,
+    deletePage: PropTypes.func.isRequired,
   }).isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 
@@ -126,12 +139,21 @@ function mapStateToProps(state, ownProps) {
   const pageId = ownProps.match.params.id;
 
   if (state.pages.length > 0) {
-    page = Object.assign({}, state.pages.find(pageInstance => pageInstance.id === pageId));
+    const blah = state.pages.find(pageInstance => pageInstance.id === pageId)
+    page = Object.assign(
+      {},
+      Object.is(blah, undefined) ? page : blah
+    );
 
     checkBoxSections = sectionsForCheckBoxes(stateSections, page);
   }
 
-  return { page, checkBoxSections, pageSections: page.sections };
+  return {
+    page,
+    checkBoxSections,
+    pageSections: page.sections,
+    location: state.location,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

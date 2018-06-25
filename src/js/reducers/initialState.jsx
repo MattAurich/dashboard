@@ -1,4 +1,8 @@
 export default {  
   pages: [],
-  sections: []
+  sections: [],
+  location: {
+    redirect: false,
+    redirectTo: '',
+  }
 }

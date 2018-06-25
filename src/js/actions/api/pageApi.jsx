@@ -5,6 +5,7 @@ class PageApi {
       .catch(error => error);
   }
 
+
   static updatePage(page) {
     const request = new Request(`http://localhost:1337/page/${page.id}`, {
       method: 'PUT',
@@ -12,6 +13,32 @@ class PageApi {
         'Content-Type': 'application/json',
       }),
       body: JSON.stringify(page),
+    });
+
+    return fetch(request)
+      .then(response => response.json())
+      .catch(error => error);
+  }
+
+
+  static createPage(page) {
+    const request = new Request('http://localhost:1337/page/', {
+      method: 'POST',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+      }),
+      body: JSON.stringify(page),
+    });
+
+    return fetch(request)
+      .then(response => response.json())
+      .catch(error => error);
+  }
+
+
+  static deletePage(page) {
+    const request = new Request(`http://localhost:1337/page/${page.id}`, {
+      method: 'DELETE',
     });
 
     return fetch(request)

@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../common/TextInput';
 import CheckBox from '../common/CheckBox';
+import ChangeLocation from '../common/ChangeLocation';
 
 class PageForm extends React.Component {
   constructor(props) {
@@ -24,6 +25,9 @@ class PageForm extends React.Component {
     const boxes = this.makeCheckBoxes();
     return (
       <div>
+        <ChangeLocation
+          location={this.props.location}
+        />
         <form>
           <div>{this.props.page.id}</div>
 
@@ -56,6 +60,7 @@ PageForm.propTypes = {
   onSave: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onSectionChange: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired,
 };
 
 export default PageForm;
