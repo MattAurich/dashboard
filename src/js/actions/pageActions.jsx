@@ -43,11 +43,10 @@ export function createPage(page) {
       });
 }
 
-export function deletePage(page) {  
+export function deletePage(page) {
   return dispatch =>
     pageApi.deletePage(page)
       .then(() => {
-        console.log(`Deleted ${page.id}`);
         dispatch(deletePageSuccess(page));
       })
       .catch((error) => {
