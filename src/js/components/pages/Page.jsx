@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import SectionList from './SectionList';
+import PageSections from './PageSections';
 import * as pageActions from '../../actions/pageActions';
 import PageForm from './PageForm';
 import ChangeLocation from '../common/ChangeLocation';
@@ -96,7 +96,7 @@ class Page extends React.Component {
         />
         <h1>{this.props.page.details}</h1>
         <div>{this.props.page.id}</div>
-        <SectionList sections={this.props.pageSections} />
+        <PageSections sections={this.props.pageSections} />
         <button className="btn btn-primary" onClick={this.toggleEdit}>edit</button>
         <button onClick={this.deletePage} className="btn btn-default">delete</button>
       </div>);
@@ -139,10 +139,10 @@ function mapStateToProps(state, ownProps) {
   const pageId = ownProps.match.params.id;
 
   if (state.pages.length > 0) {
-    const blah = state.pages.find(pageInstance => pageInstance.id === pageId)
+    const currentPage = state.pages.find(pageInstance => pageInstance.id === pageId);
     page = Object.assign(
       {},
-      Object.is(blah, undefined) ? page : blah
+      Object.is(currentPage, undefined) ? page : currentPage,
     );
 
     checkBoxSections = sectionsForCheckBoxes(stateSections, page);

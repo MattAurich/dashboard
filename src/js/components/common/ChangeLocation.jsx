@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import * as courseActions from '../../actions/locationActions';
+import * as locationActions from '../../actions/locationActions';
 
 class ChangeLocation extends React.Component {
 
@@ -30,7 +30,7 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(courseActions, dispatch),
+    actions: bindActionCreators(locationActions, dispatch),
   };
 }
 

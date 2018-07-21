@@ -1,18 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SectionList = ({ sections }) => (
+const PageSections = ({ sections }) => (
   <div>
     <h3>Sections</h3>
     <ul>
       {sections.map(section =>
-        <li key={section.id}>{section.content}</li>)}
+        <li key={section.id}>{section.name}</li>)}
     </ul>
   </div>
 );
 
-SectionList.propTypes = {
+PageSections.propTypes = {
   sections: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default SectionList;
+export default PageSections;

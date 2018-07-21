@@ -5,7 +5,7 @@ const CheckBox = ({
   item, handleChange,
 }) => (
   <div className="field">
-    <label htmlFor={item.id}>{item.content}
+    <label htmlFor={item.id}>{item.name}
       <input
         type="checkbox"
         id={item.id}
