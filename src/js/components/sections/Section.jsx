@@ -32,15 +32,22 @@ class Section extends React.Component {
   }
 
   updateSectionState(event) {
-    const field = event.target.name;
     const { section } = this.state;
-    section[field] = event.target.value;
+    
+    if (event.target) {
+      const field = event.target.name;
+      section[field] = event.target.value;
+    } else {
+      section.content = event;
+    }
+    
     return this.setState({ section });
   }
 
 
   saveSection(event) {
     event.preventDefault();
+
     this.props.actions.updateSection(this.state.section);
     this.state.isEditing = false;
   }
@@ -70,6 +77,8 @@ class Section extends React.Component {
         />
         <h1>{this.props.section.name}</h1>
         <div>{this.props.section.id}</div>
+        <h2>{this.props.section.template}</h2>
+        <p>{this.props.section.content}</p>
         <button className="btn btn-primary" onClick={this.toggleEdit}>edit</button>
         <button onClick={this.deleteSection} className="btn btn-default">delete</button>
       </div>);

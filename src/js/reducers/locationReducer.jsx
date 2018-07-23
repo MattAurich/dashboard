@@ -13,6 +13,16 @@ export default function locationReducer(state = initialState.location, action) {
         redirect: true,
         redirectTo: '/pages/',
       };
+    case types.CREATE_SECTION_SUCCESS:
+      return {
+        redirect: true,
+        redirectTo: `/sections/${action.section.id}`,
+      };
+    case types.DELETE_SECTION_SUCCESS:
+      return {
+        redirect: true,
+        redirectTo: '/sections/',
+      };
     case types.LOCATION_CHANGE_SUCCESS:
       return initialState.location;
     default:

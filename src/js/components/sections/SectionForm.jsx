@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextInput from '../common/TextInput';
 import ChangeLocation from '../common/ChangeLocation';
+import RichEditorExample from '../common/RichEditorExample';
 
 const SectionForm = (props) => {
   return (
@@ -26,11 +27,16 @@ const SectionForm = (props) => {
           onChange={props.onChange}
         />
 
-        <TextInput
+        {/* <TextInput
           name="content"
           label="Content"
           value={props.section.content}
           onChange={props.onChange}
+        /> */}
+
+        <RichEditorExample
+          section={props.section}
+          update={props.onChange}
         />
 
         <input

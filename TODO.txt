@@ -1,0 +1,19 @@
+* rewrite RichEditorExample
+** pass linter (pull out other components)
+** update the Section and CreateSection to better update state (no longer user the target as it is now conditional)
+
+* When deleting a section, raise warning of pages that will be effected. As well as a 'DELETE' box
+
+* Disallow empty required fields
+** Surface errors from server
+
+* Drag and drop sections into page
+
+* versioning (back-end/database)
+
+v2:
+* User/privileges
+
+* live update
+** staging
+*** publish to production button

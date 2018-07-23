@@ -22,9 +22,15 @@ class CreateSection extends React.Component {
   }
 
   updateSectionState(event) {
-    const field = event.target.name;
     const { section } = this.state;
-    section[field] = event.target.value;
+    
+    if (event.target) {
+      const field = event.target.name;
+      section[field] = event.target.value;
+    } else {
+      section.content = event;
+    }
+    
     return this.setState({ section });
   }
 

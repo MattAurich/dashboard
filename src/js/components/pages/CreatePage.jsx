@@ -41,6 +41,7 @@ class CreatePage extends React.Component {
     const field = event.target.name;
     const { page } = this.state;
     page[field] = event.target.value;
+
     return this.setState({ page });
   }
 
