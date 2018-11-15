@@ -11,6 +11,9 @@
 
 * versioning (back-end/database)
 
+* copy page/section for start of new page
+** maybe blog? + other pages that follow a similar template (meet the staff, etc..)
+
 v2:
 * User/privileges
 
